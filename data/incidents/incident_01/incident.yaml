@@ -1,0 +1,40 @@
+incident_id: incident_01
+
+metadata:
+  title: Elevated 5xx errors across edge services
+  ambiguity: HIGH
+  failure_archetype: config_cascade
+
+surface_description:
+  Users report elevated 5xx errors when accessing customer sites Issue began around 14:21 UTC Monitoring alerts indicate elevated 5xx across edge services and downstream service degradation.
+
+observability_scope:
+  available:
+    - ingress logs
+    - gateway logs
+    - config-service logs
+    - db-proxy logs
+  unavailable:
+    - infra metrics
+    - DB query logs
+    - manual change logs
+
+ground_truth:
+  root_cause: >
+    DB permission change caused invalid config artifact generation,
+    leading to partial config application and upstream routing failures.
+
+  causal_chain:
+    - DB permission change
+    - Corrupted config artifact
+    - Partial config apply
+    - Gateway timeouts
+    - Edge 5xx surge
+
+  competing_hypotheses:
+    - Upstream service overload
+    - DB auth instability
+
+evaluation_notes:
+  requires_temporal_reasoning: true
+  subtle_signal: partial config + auth instability alignment
