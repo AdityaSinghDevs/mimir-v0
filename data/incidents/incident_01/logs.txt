@@ -1,0 +1,12 @@
+2026-02-22T14:21:03.112Z ingress-nginx-7c9f8d6c5b-qx2lm controller INFO 10.24.6.18 - - [22/Feb/2026:14:21:03 +0000] "GET / HTTP/1.1" 504 0 "-" "Mozilla/5.0" request_id=3f2c1a8d upstream_response_time=5.002
+2026-02-22T14:21:04.087Z ingress-nginx-7c9f8d6c5b-qx2lm controller WARN upstream timed out (110: Connection timed out) while reading response header from upstream, request_id=3f2c1a8d
+2026-02-22T14:21:05.441Z gateway-api-6f4b9d7c8d-mp9k2 stdout {"ts":"2026-02-22T14:21:05.440Z","level":"ERROR","component":"http-server","msg":"request failed","request_id":"3f2c1a8d","status":502,"latency_ms":4876}
+2026-02-22T14:21:06.019Z gateway-api-6f4b9d7c8d-mp9k2 stdout {"ts":"2026-02-22T14:21:06.019Z","level":"WARN","component":"router","msg":"upstream latency above threshold","request_id":"a91d4e72","latency_ms":5123}
+2026-02-22T14:21:07.332Z config-service-5b7d9c6f44-hk8s3 stdout {"ts":"2026-02-22T14:21:07.331Z","level":"INFO","component":"config-loader","msg":"refresh triggered","artifact_bytes":184320,"source":"db"}
+2026-02-22T14:21:07.981Z config-service-5b7d9c6f44-hk8s3 stdout {"ts":"2026-02-22T14:21:07.981Z","level":"WARN","component":"config-parser","msg":"partial config applied","artifact_bytes":184320,"node":"worker-3"}
+2026-02-22T14:21:08.204Z config-service-5b7d9c6f44-hk8s3 stdout {"ts":"2026-02-22T14:21:08.204Z","level":"INFO","component":"scheduler","msg":"next refresh scheduled","interval_sec":300}
+2026-02-22T14:21:09.556Z db-proxy-7a6c8f9b4c-r2x7p stderr 2026-02-22T14:21:09.556Z WARN connection auth response=DENIED user=config_svc latency_ms=212
+2026-02-22T14:21:10.118Z ingress-nginx-7c9f8d6c5b-qx2lm controller INFO 10.24.6.21 - - [22/Feb/2026:14:21:10 +0000] "GET /assets/app.js HTTP/1.1" 503 197 "-" "Mozilla/5.0" request_id=b72e0c44 upstream_response_time=2.941
+2026-02-22T14:21:11.404Z gateway-api-6f4b9d7c8d-mp9k2 stdout {"ts":"2026-02-22T14:21:11.404Z","level":"INFO","component":"health","msg":"health check passed","duration_ms":12}
+2026-02-22T14:21:12.267Z gateway-api-6f4b9d7c8d-mp9k2 stdout {"ts":"2026-02-22T14:21:12.266Z","level":"ERROR","component":"http-client","msg":"timeout contacting dependency","request_id":"c0e9f1aa","timeout_ms":5000}
+2026-02-22T14:21:13.913Z ingress-nginx-7c9f8d6c5b-qx2lm controller WARN 10.24.6.18 - - [22/Feb/2026:14:21:13 +0000] "GET /login HTTP/1.1" 502 0 "-" "Mozilla/5.0" request_id=c0e9f1aa upstream_response_time=5.000

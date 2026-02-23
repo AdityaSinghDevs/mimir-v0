@@ -1,0 +1,124 @@
+PRECURSOR PROMPT:
+
+I will be using you for a task, Absorb the following instructions first, and follow them at every instance and every response in this chat :
+
+You are generating realistic raw system logs from a Kubernetes-based microservice environment.
+
+The logs must resemble what would naturally appear in production systems and should reflect:
+
+- Kubernetes pod logs (container stdout/stderr)
+- Application logs in structured JSON format
+- Ingress controller access logs
+
+Formatting constraints:
+
+1. Use realistic timestamps (RFC3339 or ISO-8601 format).
+2. Include log levels (INFO, WARN, ERROR) where appropriate.
+3. Use realistic Kubernetes-style pod names:
+   <service-name>-<replica-hash>-<random-suffix>
+4. Include container or component identifiers when natural.
+5. Include request IDs or correlation IDs where appropriate.
+6. Maintain consistency of pod names across lines.
+7. Do not mix logging styles unnaturally (each service keeps consistent format).
+
+Realism constraints:
+
+- Logs should reflect incomplete observability.
+- Components only log what they locally observe.
+- Avoid omniscient or cross-service explanations.
+- Do not include shell commands, grep outputs, database query results, or human diagnostic commentary.
+- Avoid narrative progression or theatrical structure.
+- Do not include explicit "diagnosis moments".
+- Avoid symmetrical storytelling patterns.
+- Not every log line needs to be meaningful.
+- Some lines should be neutral operational noise (startup, health checks, metrics).
+
+Important:
+The logs should feel like a random slice of production logs during a failure window — not a curated teaching example.
+
+
+
+
+
+GENERATION PROMPT:
+
+Now, You are generating synthetic system logs for a research study on LLM-based incident diagnosis. 
+
+
+Your task is NOT to make the root cause obvious.
+
+
+
+You must produce realistic, ambiguous logs that reflect the following fixed causal structure:
+
+
+
+Root cause:
+
+
+
+
+Precursors:
+
+
+
+Competing plausible hypotheses:
+
+
+Affected components :
+
+
+Observable constraints:
+
+
+Observable service level signals :
+
+Ambiguity Level: ...
+
+
+
+Ambiguity definition:
+
+
+
+LOW:
+- Include at least one log line that strongly favors the root cause.
+- Competing hypothesis should be weakly supported.
+- Root cause should be distinguishable with minimal reasoning.
+
+
+
+MODERATE:
+- Evidence should overlap across hypotheses.
+- Root cause should have slightly stronger support.
+- No single log line should conclusively prove it.
+- Requires verification-style reasoning.
+
+
+
+HIGH:
+- Evidence should be nearly symmetric across hypotheses.
+- Both hypotheses must appear equally plausible from most logs.
+- Root cause should only be distinguishable by subtle constraint mismatch.
+- Avoid dominant smoking-gun indicators.
+
+
+
+Generation requirements:
+
+- Do NOT explicitly state the root cause.
+- Do NOT include any log line that directly names the failure mechanism.
+- Avoid giveaway phrases like "misconfiguration detected" or "manual deletion executed".
+- Ensure ambiguity arises naturally from overlapping symptoms.
+- At least two hypotheses must remain plausible from the logs alone.
+- Include a small amount of neutral operational noise.
+- Keep logs between 8–14 lines.
+- Do not structure logs into narrative phases.
+- Avoid dramatic escalation or resolution patterns.
+- Do not include recovery steps.
+- Only generate logs within the failure window.
+
+
+
+Output only 10-15 raw log lines.
+Do not explain anything.

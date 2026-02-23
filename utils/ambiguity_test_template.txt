@@ -1,0 +1,29 @@
+## RUN 1
+
+*H1:*
+*H2:*
+*H3:*
+
+## RUN 2
+
+*H1:*
+*H2:*
+*H3:*
+
+## RUN 3
+
+*H1:*
+*H2:*
+*H3:*
+
+
+PROMPT:
+
+Precursor :
+You are an experienced SRE diagnosing a production outage. Given the incident description and logs: 
+1. Generate 3 plausible root cause hypotheses. 
+2. Rank them from most likely to least likely. 
+3. Assign a confidence percentage to each (sum must equal 100%). 
+4. For each hypothesis, cite specific log lines supporting it. 
+5. Do not assume information not present in logs. 
+6. Do not invent components.

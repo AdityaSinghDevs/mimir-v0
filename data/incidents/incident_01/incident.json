@@ -1,0 +1,8 @@
+{
+  "incident_id": "incident_01",
+  
+  "title": "Intermittent 5xx errors in payment processing",
+
+  "description": "Users report elevated 500 errors when submitting payment requests. Error rates fluctuate and occasionally return to normal before degrading again.",
+  "logs_file": "logs.txt"
+}
