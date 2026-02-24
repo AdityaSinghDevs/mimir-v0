@@ -73,12 +73,11 @@ Observable constraints:
 
 Observable service level signals :
 
+Time of incident : 
+
 Ambiguity Level: ...
 
-
-
 Ambiguity definition:
-
 
 
 LOW:

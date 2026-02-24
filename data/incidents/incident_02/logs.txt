@@ -1,0 +1,14 @@
+```
+2026-02-22T10:03:11.482Z INFO  api-writesvc-6f9c8d7b5f-q2m8k {"level":"INFO","ts":"2026-02-22T10:03:11.482Z","msg":"write request received","request_id":"req-9c2b1e7a","user_id":"u_483291","route":"/v1/user/update"}
+2026-02-22T10:03:18.907Z WARN  postgres-primary-0 {"timestamp":"2026-02-22T10:03:18.907Z","level":"WARN","component":"wal","msg":"replication slot lag exceeds threshold","slot":"replica_slot_1","write_lag_bytes":184732921}
+2026-02-22T10:03:24.113Z INFO  pg-backup-agent-7c4b9d6f8c-lp7sx {"level":"INFO","ts":"2026-02-22T10:03:24.113Z","msg":"starting base backup","target":"replica-1","method":"pg_basebackup"}
+2026-02-22T10:03:31.556Z ERROR pg-backup-agent-7c4b9d6f8c-lp7sx {"level":"ERROR","ts":"2026-02-22T10:03:31.556Z","msg":"base backup failed","error":"connection reset during COPY","attempt":3}
+2026-02-22T10:03:39.044Z WARN  postgres-replica-1 {"timestamp":"2026-02-22T10:03:39.044Z","level":"WARN","component":"recovery","msg":"requested WAL segment not found","segment":"0000000300000A1C0000009F"}
+2026-02-22T10:03:47.268Z INFO  repl-orchestrator-5b6d8c9f7d-x9n2v {"level":"INFO","ts":"2026-02-22T10:03:47.268Z","msg":"replication topology update in progress","leader":"repl-orchestrator-5b6d8c9f7d-x9n2v"}
+2026-02-22T10:04:02.881Z ERROR api-writesvc-6f9c8d7b5f-q2m8k {"level":"ERROR","ts":"2026-02-22T10:04:02.881Z","msg":"write failed","request_id":"req-9c2b1e7a","error":"serialization failure","status":500}
+2026-02-22T10:04:16.402Z WARN  postgres-primary-0 {"timestamp":"2026-02-22T10:04:16.402Z","level":"WARN","component":"checkpointer","msg":"checkpoint taking longer than expected","duration_ms":74231}
+2026-02-22T10:04:29.119Z ERROR postgres-replica-1 {"timestamp":"2026-02-22T10:04:29.119Z","level":"ERROR","component":"recovery","msg":"invalid timeline history reference","timeline":4}
+2026-02-22T10:04:41.763Z WARN  bg-reconciler-6d7f8c9b4e-rt5h2 {"level":"WARN","ts":"2026-02-22T10:04:41.763Z","msg":"detected partial user state during reconciliation","user_id":"u_483291","missing_fields":["profile","preferences"]}
+2026-02-22T10:04:55.508Z INFO  repl-orchestrator-5b6d8c9f7d-x9n2v {"level":"INFO","ts":"2026-02-22T10:04:55.508Z","msg":"observed primary connectivity change","node":"postgres-primary-0"}
+2026-02-22T10:05:02.936Z ERROR api-writesvc-6f9c8d7b5f-q2m8k {"level":"ERROR","ts":"2026-02-22T10:05:02.936Z","msg":"write timeout","request_id":"req-a71f4d09","error":"context deadline exceeded","status":504}
+```
