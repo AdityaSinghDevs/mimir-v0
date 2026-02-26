@@ -1,0 +1,29 @@
+2026-02-22T10:03:11.482Z INFO postgres-primary-6f9c8d7c4b-k2m7p {"component":"postgres","role":"primary","msg":"WAL sender started","client":"replica","slot":"replica_slot_1","lsn":"0/6A2F1B8"}
+
+2026-02-22T10:03:19.907Z WARN postgres-replica-5c7d9f6b8f-r8q4n {"component":"postgres","role":"replica","msg":"replication lag above threshold","slot":"replica_slot_1","write_lag_ms":18432,"flush_lag_ms":17601}
+
+2026-02-22T10:03:27.114Z ERROR backup-agent-7bbf9d6f55-x1z9c {"component":"pg_basebackup","msg":"base backup failed","exit_code":1,"detail":"could not read from replication stream","retry":3}
+
+2026-02-22T10:03:36.002Z INFO postgres-primary-6f9c8d7c4b-k2m7p {"component":"control","msg":"database system was interrupted","last_known_state":"in-production","checkpoint_lsn":"0/6A2F1B8"}
+
+2026-02-22T10:03:41.662Z INFO repl-orchestrator-6d4b7f8c9d-m0p2 {"component":"orchestrator","msg":"observed topology change","leader":"postgres-replica","term":42}
+
+2026-02-22T10:03:47.881Z INFO postgres-primary-6f9c8d7c4b-k2m7p {"component":"startup","msg":"database system identifier initialized","system_identifier":"834729834729","timeline":1}
+
+2026-02-22T10:03:52.004Z WARN postgres-primary-6f9c8d7c4b-k2m7p {"component":"catalog","msg":"database entry count differs from expected","expected":5,"observed":2}
+
+2026-02-22T10:03:58.301Z WARN postgres-replica-5c7d9f6b8f-r8q4n {"component":"postgres","role":"replica","msg":"requested timeline 7 not found in history file","current_timeline":6}
+
+2026-02-22T10:04:06.845Z ERROR user-api-7f6c9d8b5c-v3n4m {"level":"ERROR","msg":"write request failed","request_id":"a9e3c1f2","error":"serialization failure","status":500}
+
+2026-02-22T10:04:21.090Z WARN worker-reconcile-6c8d7f9b4a-q2w8e {"level":"WARN","msg":"partial reconciliation detected","job":"user-sync","missing_entities":12,"request_id":"bg-44f1"}
+
+2026-02-22T10:04:33.512Z INFO postgres-primary-6f9c8d7c4b-k2m7p {"component":"storage","msg":"data directory contents appear minimal","detected_relations":0}
+
+2026-02-22T10:04:37.519Z INFO postgres-primary-6f9c8d7c4b-k2m7p {"component":"postgres","role":"primary","msg":"database system identifier differs from peer","peer":"replica","local_sysid":"834729834729","remote_sysid":"723984723001"}
+
+2026-02-22T10:04:49.233Z WARN repl-orchestrator-6d4b7f8c9d-m0p2 {"component":"orchestrator","msg":"leadership uncertainty","reason":"conflicting primary reports","observed_nodes":2}
+
+2026-02-22T10:04:58.771Z ERROR user-api-7f6c9d8b5c-v3n4m {"level":"ERROR","msg":"write request failed","request_id":"b71d8a90","error":"relation state mismatch","status":500}
+
+2026-02-22T10:05:07.406Z INFO postgres-replica-5c7d9f6b8f-r8q4n {"component":"postgres","role":"replica","msg":"recovery paused awaiting WAL","last_received_lsn":"0/69FF2A0"}

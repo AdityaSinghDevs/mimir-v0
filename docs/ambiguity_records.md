@@ -1,0 +1,8 @@
+## HIGH AMBIGUITY (3-4)
+* Incident 01
+
+
+## MODERATE AMBIGUITY (2-3)
+* Incident 02
+
+## LOW AMBIGUITY (2-3)
