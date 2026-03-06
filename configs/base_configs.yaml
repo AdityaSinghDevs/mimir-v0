@@ -1,0 +1,4 @@
+experiment:
+  max_tokens : 256
+  temperature : 0.7
+  n_runs : 3
