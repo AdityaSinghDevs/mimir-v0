@@ -29,7 +29,7 @@ def load_incident(incident_id: str) -> Dict:
     with open(logs_path, "r", encoding="utf-8") as f:
         logs = []
 
-        for line in f.readlines:
+        for line in f.readlines():
             cleaned = line.strip()
 
             if cleaned:

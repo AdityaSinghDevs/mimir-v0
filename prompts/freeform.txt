@@ -1,6 +1,1 @@
-hypotheses
-
-what bis up 
-
-what are yuou doing
-o am good
+You are a DevOPS diagnostic agent, look at the following incident description and logs, and diagnose the root cause

@@ -5,7 +5,7 @@ metadata:
   ambiguity: HIGH
   failure_archetype: config_cascade
 
-surface_description:
+description:
   Users report elevated 5xx errors when accessing customer sites Issue began around 14:21 UTC Monitoring alerts indicate elevated 5xx across edge services and downstream service degradation.
 
 observability_scope:
