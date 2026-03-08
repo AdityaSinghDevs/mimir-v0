@@ -15,14 +15,14 @@ def chat_builder(model: Any, tokenizer : Any, messages : list)->Any:
 
 def generate_response(inputs: Any, model: Any,
                       tokenizer : Any, do_sample: bool,
-                       max_tokens, temparature: int,
-                       top_p : int)->Any:
+                       max_tokens, temperature: float,
+                       top_p : float)->Any:
     
     outputs  = model.generate(
         **inputs,
-        max_tokens = max_tokens,
+        max_new_tokens = max_tokens,
         do_sample = do_sample,
-        temparature = temparature,
+        temperature = temperature,
         top_p = top_p
     )
 
