@@ -3,7 +3,7 @@ from typing import Any
 
 def chat_builder(model: Any, tokenizer : Any, messages : list)->Any:
 
-    text = tokenizer.apply_chat_template()(
+    text = tokenizer.apply_chat_template(
         messages,
         tokenize = False,
         add_generation_prompt = True

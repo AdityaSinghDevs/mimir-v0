@@ -7,7 +7,7 @@ def load_prompt(prompt_type : str)->str:
     prompt_path = os.path.join(PROMPTS, prompt_file)
 
     with open(prompt_path, "r") as f:
-        prompt  = [f.read()]
+        prompt  = f.read()
 
     return prompt
 
