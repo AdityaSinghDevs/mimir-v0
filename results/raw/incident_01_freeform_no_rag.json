@@ -1,0 +1,24 @@
+[
+  {
+    "incident_id": "incident_01",
+    "prompt_type": "freeform",
+    "temperature": 0.7,
+    "top_p": 0.9,
+    "max_tokens": 150,
+    "do_sample": true,
+    "responses": [
+      {
+        "run_id": 1,
+        "response": "Root Cause: High load on the ingress-nginx controller causing timeouts and degraded performance.\n\nSupporting Evidence: Multiple logs show 502 and 504 errors with upstream timeouts (e.g., 2026-02-22T14:21:03.112Z ingress-nginx-7c9f8d6c5b-qx2lm controller INFO 10.24.6.18 - - [22/Feb/2026:14:21:03 +0000] \"GET / HTTP/1.1\" 504 0 \"-\" \"Mozilla/5.0\" request_id="
+      },
+      {
+        "run_id": 2,
+        "response": "Root Cause: There is an issue with the upstream service causing timeouts and degraded performance, leading to 5xx errors.\n\nSupporting Evidence: The logs show multiple instances of 502 and 504 errors, as well as WARN messages indicating upstream timeout issues. For example, at 14:21:03, the ingress-nginx log indicates a GET request with a 504 error, followed by a WARN about the upstream being unreachable. Additionally, at 14:21:12, there is an error message stating that a timeout occurred while contacting a dependency."
+      },
+      {
+        "run_id": 3,
+        "response": "Root Cause: The issue is likely caused by a network connectivity problem, specifically a timeout in the communication between the ingress-nginx controller and the upstream services. This is evidenced by the repeated 504 Gateway Timeout errors and the 502 Bad Gateway errors indicating that the controller is unable to establish or maintain a successful connection with the upstream services.\n\nSupporting Evidence: \n- Multiple logs show 504 Gateway Timeout errors (\"upstream timed out (110: Connection timed out)\").\n- There are also 502 Bad Gateway errors (\"upstream response time\" exceeds expected values).\n- Network authentication issues (\"connection auth response=DENIED\") suggest network connectivity problems."
+      }
+    ]
+  }
+]

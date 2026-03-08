@@ -7,4 +7,4 @@ INCIDENTS = DATA/ "incidents"
 
 PROMPTS = ROOT / "prompts"
 
-RESULTS = ROOT/ "results"
+RESULTS = ROOT/ "results"/ "raw"
