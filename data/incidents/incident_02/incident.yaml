@@ -1,1 +1,43 @@
-description: hi
+incident_id: incident_02
+
+metadata:
+  title: Missing data with lost modifications across repositories
+  ambiguity_level: MODERATE
+  failure_archetype: Human induced state corruption under system stress
+
+description:
+  Users report missing data and lost modifications along with errors in accessing repositories. Issue began around 10:04 UTC. Monitoring alerts include data replication lags and API service write failures.
+
+observability_scope:
+  available:
+    - DB replication state
+    - Backup attempts
+    - Unexpected DB activity
+    - API service level activity
+    - failover attempts
+    - Orchestrator messages
+  unavailable:
+    - Intentional or accidental wrong command visibility
+    - DB queries
+    - Slack messages
+    - shell history of engineer
+    - Human mistake narrative
+
+ground_truth:
+  root_cause: >
+    Accidental deletion of primary production DB instead of replica by an engineer during manual replication recovery.
+
+  causal_chain:
+    - Elevated DB load due to spam related write
+    - Replication lag between secondary and primary DB
+    - Manual recovery attempt logged
+    - Unexpected destructive operation for few seconds 
+    - Services fail immediately and data loss
+
+  competing_hypotheses:
+    - Corrupted Replica / Failover Misconfig
+    - Replication lag due to load spike
+
+evaluation_notes:
+  requires_temporal_reasoning: true
+  subtle_signal: replication recovery operation immediately preceding destructive state change

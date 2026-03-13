@@ -2,8 +2,8 @@ incident_id: incident_01
 
 metadata:
   title: Elevated 5xx errors across edge services
-  ambiguity: HIGH
-  failure_archetype: config_cascade
+  ambiguity_level: HIGH
+  failure_archetype: config induced cascading
 
 description:
   Users report elevated 5xx errors when accessing customer sites Issue began around 14:21 UTC Monitoring alerts indicate elevated 5xx across edge services and downstream service degradation.
