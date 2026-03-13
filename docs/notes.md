@@ -134,3 +134,26 @@ Ambiguity calibration is measurable.
 Model reasoning is forced to prioritize.
 
 That’s exactly what you want.
+
+-----
+SRE reasoning workflow
+
+Typical debugging pipeline:
+
+observe symptoms
+generate hypotheses
+test hypotheses
+identify cause
+apply mitigation
+
+This pattern appears in:
+
+Google SRE handbook
+
+incident postmortems
+
+debugging literature
+
+So your justification is:
+
+The structured schema reflects the hypothesis-driven diagnostic reasoning process commonly used in incident response and debugging workflows.

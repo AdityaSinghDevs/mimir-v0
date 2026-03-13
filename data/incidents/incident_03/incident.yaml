@@ -1,1 +1,44 @@
-description: hi2
+incident_id: incident_03
+
+metadata:
+  title: Missing data with lost modifications across repositories(Same as 02, increased ambiguity_level)
+  ambiguity_level: HIGH
+  failure_archetype: Human induced state corruption under system stress
+
+description:
+  Users report missing data, write failures and lost modifications along with errors in accessing repositories. Issue began around 10:04 UTC. Monitoring alerts include data replication lags and API service write failures.
+
+observability_scope:
+  available:
+    - DB replication state
+    - Backup attempts
+    - Unexpected DB activity
+    - API service level activity
+    - failover attempts
+    - Orchestrator messages
+  unavailable:
+    - Intentional or accidental wrong command visibility
+    - DB queries
+    - Slack messages
+    - shell history of engineer
+    - Human mistake narrative
+
+ground_truth:
+  root_cause: >
+    Primary cluster reinitialized against incorrect or empty data directory during replication recovery procdeure
+
+  causal_chain:
+    - Replication lag and backup instability
+    - Primary interruption during recovery window 
+    - Orchestrator promotes replica
+    - Primary restarts with new identity(timeline resets)
+    - Split-brain + data loss symptoms
+
+  competing_hypotheses:
+    - Replication lag caused WAL gap and stable promotions
+    - Backup agent/replication stream instability triggered crash cascade
+    - Volume attachment or orchestration misconfig during restart
+
+evaluation_notes:
+  requires_temporal_reasoning: true
+  subtle_signal: recovery attempt followed by relation inventory collapse and replication metadata mismatch between nodes

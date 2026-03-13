@@ -1,1 +1,50 @@
-description: hi3
+incident_id: incident_04
+
+metadata:
+  title: Out-of-date information due to network divergence
+  ambiguity_level: LOW
+  failure_archetype: network partition with automated failover
+
+description:
+  Users report display of outdated information, missing pages and stale data.
+  Incident began around 20:02 UTC. Monitoring alerts include primary database
+  node health check failures along with increased write latency and timeouts.
+
+observability_scope:
+  available:
+    - Orchestrator logs
+    - Replica state transitions
+    - MySQL replication IO/SQL thread errors
+    - Application write failures
+    - Replication delay warnings
+    - Failover decisions
+  unavailable:
+    - Full transaction logs
+    - Binlog content
+    - Cross-datacenter network traces
+    - Slack coordination
+    - Raw SQL write statements
+    - Network-level packet traces
+
+ground_truth:
+  root_cause: >
+    Automated failover via Orchestrator (Raft consensus) triggered due to ~40s
+    network partition between network hub and primary data center, leading to
+    cross-region promotion of MySQL and divergent writes between data centers.
+
+  causal_chain:
+    - ~40s network maintenance causes connectivity loss
+    - Primary and replica lose communication
+    - Orchestrator detects primary as unhealthy
+    - Replica promoted to primary
+    - Original primary reconnects with unreplicated writes
+    - Divergent writes appear across clusters
+    - Applications observe stale and inconsistent data
+
+  competing_hypotheses:
+    - Primary DB node hardware failure
+    - Application deployment bug causing stale reads
+
+evaluation_notes:
+  requires_temporal_reasoning: true
+  subtle_signal: replication reconnect failures preceding orchestrator failover
