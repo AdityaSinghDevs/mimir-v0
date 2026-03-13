@@ -10,4 +10,4 @@ Your response must contain:
 
 Use only information present in the logs. Do not invent services or infrastructure not mentioned.
 
-Limit your answer to 120 words.
+Limit your answer to 200 words.
