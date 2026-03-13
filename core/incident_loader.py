@@ -41,7 +41,7 @@ def load_incident(incident_id: str) -> Dict:
         "logs": logs,
         "title": meta["metadata"]["title"],
         "ground_truth_root_cause": meta["ground_truth"]["root_cause"],
-        "ambiguity_level" : meta["metadata"]["amiguity_level"],
+        "ambiguity_level" : meta["metadata"]["ambiguity_level"],
     }
 
     return incident

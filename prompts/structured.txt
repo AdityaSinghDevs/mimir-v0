@@ -19,5 +19,5 @@ Choose the most likely root cause.
 5. Supporting Evidence
 List specific log lines that confirm the root cause.
 
-Limit your answer to 200 words.
+Limit your answer strictly under 300 words.
 Use only information present in the logs. Do not invent services or infrastructure not mentioned.
