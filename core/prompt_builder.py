@@ -17,8 +17,7 @@ def prompt_builder(prompt_type: str, incident : dict):
 
     system_prompt = load_prompt(prompt_type=prompt_type)
 
-    user_prompt= f""" 
-    Incident ID : {incident["id"]}
+    user_prompt= f"""Incident ID : {incident["id"]}
 
     Incident Description :
     {incident["description"]}

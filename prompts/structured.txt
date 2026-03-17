@@ -4,20 +4,28 @@ Analyze the provided incident description and system logs.
 
 Follow this diagnostic structure strictly.
 
-1. Symptom Identification
-Identify the key observable system failures.
+Symptom Identification:
+...
+(Identify the key observable system failures.)
 
-2. Hypothesis Generation
-List 1–3 plausible root causes.
+Hypothesis Generation:
+...
+(List 1–3 plausible root causes.)
 
-3. Verification Checks
-For each hypothesis, identify log evidence supporting or contradicting it.
+Verification Checks:
+...
+(For each hypothesis, identify log evidence supporting or contradicting it.)
 
-4. Root Cause Conclusion
-Choose the most likely root cause.
+Root Cause Conclusion:
+...
+(Choose the most likely root cause.)
 
-5. Supporting Evidence
-List specific log lines that confirm the root cause.
+Supporting Evidence:
+...
+(List specific log lines that confirm the root cause.)
 
-Limit your answer strictly under 300 words.
+Limit your answer strictly under 300-350 words.
 Use only information present in the logs. Do not invent services or infrastructure not mentioned.
+
+Ensure all five sections are fully completed before ending the response.
+Do not stop mid-structure.

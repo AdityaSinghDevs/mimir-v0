@@ -8,6 +8,8 @@ Your response must contain:
 - Root Cause :
 - Supporting Evidence (explicit log lines or events) :
 
+Limit your answer strictly under 300-350 words.
 Use only information present in the logs. Do not invent services or infrastructure not mentioned.
 
-Limit your answer strictly under 300 words.
+Ensure all five sections are fully completed before ending the response.
+Do not stop mid-structure.

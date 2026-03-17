@@ -1,0 +1,26 @@
+{
+  "incident_id": "incident_02",
+  "title": "Missing data with lost modifications across repositories",
+  "ground_truth_root_cause": "Accidental deletion of primary production DB instead of replica by an engineer during manual replication recovery.\n",
+  "ambiguity_level": "MODERATE",
+  "prompt_type": "freeform",
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "temperature": 0.7,
+  "top_p": 0.9,
+  "max_tokens": 400,
+  "do_sample": true,
+  "responses": [
+    {
+      "run_id": 1,
+      "response": "Root Cause :\nData replication issues leading to serialization failures and context deadline exceeded errors on the API service due to prolonged replication slot lag and invalid timeline history references.\n\nSupporting Evidence :\n- `ERROR api-writesvc-6f9c8d7b5f-q2m8k {\"level\":\"ERROR\",\"ts\":\"2026-02-22T10:04:02.881Z\",\"msg\":\"write failed\",\"request_id\":\"req-9c2b1e7a\",\"error\":\"serialization failure\",\"status\":500}`\n- `ERROR postgres-replica-1 {\"timestamp\":\"2026-02-22T10:04:29.119Z\",\"level\":\"ERROR\",\"component\":\"recovery\",\"msg\":\"invalid timeline history reference\",\"timeline\":4}`"
+    },
+    {
+      "run_id": 2,
+      "response": "Root Cause :\nThe PostgreSQL replica-1 is unable to find requested WAL segments, causing replication lag issues which lead to serialization failures and timeouts in the API write requests. This indicates that the primary node might be experiencing checkpoint delays, leading to inconsistent data states and subsequent failures.\n\nSupporting Evidence :\n- `2026-02-22T10:04:16.402Z WARN postgres-primary-0 {\"timestamp\":\"2026-02-22T10:04:16.402Z\",\"level\":\"WARN\",\"component\":\"checkpointer\",\"msg\":\"checkpoint taking longer than expected\",\"duration_ms\":74231}`\n- `2026-02-22T10:04:29.119Z ERROR postgres-replica-1 {\"timestamp\":\"2026-02-22T10:04:29.119Z\",\"level\":\"ERROR\",\"component\":\"recovery\",\"msg\":\"invalid timeline history reference\",\"timeline\":4}`"
+    },
+    {
+      "run_id": 3,
+      "response": "Root Cause :\nThe root cause of the incident is a database replica lag leading to serialization failures and write timeouts in the API service, causing users to lose their data and modifications.\n\nSupporting Evidence :\n- `2026-02-22T10:03:18.907Z WARN postgres-primary-0 {\u201ctimestamp\u201d:\u201c2026-02-22T10:03:18.907Z\u201d,\u201clevel\u201d:\u201cWARN\u201d,\u201ccomponent\u201d:\u201cwal\u201d,\u201cmsg\u201d:\u201creplication slot lag exceeds threshold\u201d,\u201cslot\u201d:\u201creplica_slot_1\u201d,\u201cwrite_lag_bytes\u201d:184732921}`\n- `2026-02-22T10:04:02.881Z ERROR api-writesvc-6f9c8d7b5f-q2m8k {\u201clevel\u201d:\u201cERROR\u201d,\u201cts\u201d:\u201c2026-02-22T10:04:02.881Z\u201d,\u201cmsg\u201d:\u201cwrite failed\u201d,\u201crequest_id\u201d:\u201creq-9c2b1e7a\u201d,\u201cerror\u201d:\u201cserialization failure\u201d,\u201cstatus\u201d:500}`\n- `2026-02-22T10:05:02.936Z ERROR api-writesvc-6f9c8d7b5f-q2m8k {\u201clevel\u201d:\u201cERROR\u201d,\u201cts\u201d:\u201c2026-02-22T10:05:02.936Z\u201d,\u201cmsg\u201d:\u201cwrite timeout\u201d,\u201crequest_id\u201d:\u201creq-a71f4d09\u201d,\u201cerror\u201d:\u201ccontext deadline exceeded\u201d,\u201cstatus\u201d:504}`"
+    }
+  ]
+}

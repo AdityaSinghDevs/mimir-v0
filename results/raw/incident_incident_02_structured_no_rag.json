@@ -1,0 +1,26 @@
+{
+  "incident_id": "incident_02",
+  "title": "Missing data with lost modifications across repositories",
+  "ground_truth_root_cause": "Accidental deletion of primary production DB instead of replica by an engineer during manual replication recovery.\n",
+  "ambiguity_level": "MODERATE",
+  "prompt_type": "structured",
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "temperature": 0.7,
+  "top_p": 0.9,
+  "max_tokens": 400,
+  "do_sample": true,
+  "responses": [
+    {
+      "run_id": 1,
+      "response": "### Symptom Identification\nUsers report missing data and lost modifications along with errors in accessing repositories. Specific symptoms include API write failures, data replication lags, and issues accessing repositories.\n\n### Hypothesis Generation\n1. **API Service Write Failure**: There might be an issue with the API service itself causing write failures.\n2. **Data Replication Lag**: The data replication process may have encountered an issue, leading to lags and loss of data.\n3. **WAL Corruption or Inconsistency**: PostgreSQL\u2019s Write-Ahead Logging (WAL) might be corrupted or inconsistent, causing replication issues and write failures.\n\n### Verification Checks\n#### For Hypothesis 1: API Service Write Failure\n- **Log Evidence**: \n  - `2026-02-22T10:04:02.881Z ERROR api-writesvc-6f9c8d7b5f-q2m8k {\"level\":\"ERROR\",\"ts\":\"2026-02-22T10:04:02.881Z\",\"msg\":\"write failed\",\"request_id\":\"req-9c2b1e7a\",\"error\":\"serialization failure\",\"status\":500}`\n  - This log line shows an error occurring on the API service during a write operation, which directly supports the hypothesis.\n\n#### For Hypothesis 2: Data Replication Lag\n- **Log Evidence**:\n  - `2026-02-22T10:03:18.907Z WARN  postgres-primary-0 {\"timestamp\":\"2026-02-22T10:03:18.907Z\",\"level\":\"WARN\",\"component\":\"wal\",\"msg\":\"replication slot lag exceeds threshold\",\"slot\":\"replica_slot_1\",\"write_lag_bytes\":18473292"
+    },
+    {
+      "run_id": 2,
+      "response": "### Symptom Identification\nUsers experience missing data and lost modifications along with errors in accessing repositories. There are also API service write failures and data replication lags.\n\n### Hypothesis Generation\n1. **Data Backup Failure**: The PostgreSQL backup process failed, causing issues with data integrity and replication.\n2. **Replication Lag**: Replication lags may have caused data inconsistencies and API write failures.\n3. **API Service Error**: The API service encountered a serialization failure due to some underlying issue.\n\n### Verification Checks\n1. **Data Backup Failure**\n   - **Log Evidence Contradicting**: No log entries explicitly indicating a successful base backup completion.\n   - **Log Evidence Supporting**: Error message \"base backup failed\" on `2026-02-22T10:03:31.556Z` with error \"connection reset during COPY\".\n\n2. **Replication Lag**\n   - **Log Evidence Contradicting**: No significant changes in replication topology or checkpoint duration.\n   - **Log Evidence Supporting**: Replication slot lag warning on `2026-02-22T10:03:18.907Z` indicates a replication lag exceeding the threshold, suggesting potential data inconsistency.\n\n3. **API Service Error**\n   - **Log Evidence Contradicting**: Log shows no indication of API service error directly affecting write requests.\n   - **Log Evidence Supporting**: Error \"serialization failure\" on `2026-02-22T10:04:02.881Z` for write request, but it's not clear if this is the root cause without more context.\n\n### Root Cause Conclusion\nThe most likely root cause is the data backup failure, which could be causing data inconsistencies and replication issues.\n\n### Supporting Evidence\n1. **Log Lines Confirming Data Backup Failure**:\n   ```\n   2026-0"
+    },
+    {
+      "run_id": 3,
+      "response": "### 1. Symptom Identification\nUsers report missing data and lost modifications along with errors in accessing repositories. Issues include write failures, replication lags, and timeouts.\n\n### 2. Hypothesis Generation\n- **Hypothesis 1:** Data replication issue causing lag and subsequent write failures.\n- **Hypothesis 2:** PostgreSQL server experiencing long checkpoint times leading to write failures.\n- **Hypothesis 3:** Partial user state during reconciliation causing intermittent access issues.\n\n### 3. Verification Checks\n- **Hypothesis 1 (Data Replication Issue):**\n  - Log: `2026-02-22T10:03:18.907Z WARN  postgres-primary-0 {\"timestamp\":\"2026-02-22T10:03:18.907Z\",\"level\":\"WARN\",\"component\":\"wal\",\"msg\":\"replication slot lag exceeds threshold\",\"slot\":\"replica_slot_1\",\"write_lag_bytes\":184732921}`\n  - This log indicates high replication slot lag, suggesting data replication issues.\n\n- **Hypothesis 2 (PostgreSQL Checkpoint Time Out):**\n  - Log: `2026-02-22T10:04:16.402Z WARN  postgres-primary-0 {\"timestamp\":\"2026-02-22T10:04:16.402Z\",\"level\":\"WARN\",\"component\":\"checkpointer\",\"msg\":\"checkpoint taking longer than expected\",\"duration_ms\":74231}`\n  - This log suggests that the checkpoint process is taking significantly more time than expected, which could lead to write failures.\n\n- **Hypothesis 3 (Partial User State During Reconciliation):**\n  - Log: `2026-02-22T10"
+    }
+  ]
+}

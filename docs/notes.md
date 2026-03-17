@@ -157,3 +157,8 @@ debugging literature
 So your justification is:
 
 The structured schema reflects the hypothesis-driven diagnostic reasoning process commonly used in incident response and debugging workflows.
+
+
+
+
+>> have to change max tokens from 400 to even more as structured is not completing response 

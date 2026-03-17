@@ -1,0 +1,26 @@
+{
+  "incident_id": "incident_01",
+  "title": "Elevated 5xx errors across edge services",
+  "ground_truth_root_cause": "DB permission change caused invalid config artifact generation, leading to partial config application and upstream routing failures.\n",
+  "ambiguity_level": "HIGH",
+  "prompt_type": "freeform",
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "temperature": 0.7,
+  "top_p": 0.9,
+  "max_tokens": 400,
+  "do_sample": true,
+  "responses": [
+    {
+      "run_id": 1,
+      "response": "Root Cause :\nThe root cause of the issue is an intermittent network connectivity problem that caused a timeout on the upstream service, resulting in 502 Bad Gateway responses from the Ingress NGINX controller.\n\nSupporting Evidence :\n- 2026-02-22T14:21:04.087Z ingress-nginx-7c9f8d6c5b-qx2lm controller WARN upstream timed out (110: Connection timed out) while reading response header from upstream.\n- 2026-02-22T14:21:12.267Z gateway-api-6f4b9d7c8d-mp9k2 stdout {\"ts\":\"2026-02-22T14:21:12.266Z\",\"level\":\"ERROR\",\"component\":\"http-client\",\"msg\":\"timeout contacting dependency\",\"request_id\":\"c0e9f1aa\",\"timeout_ms\":5000}."
+    },
+    {
+      "run_id": 2,
+      "response": "Root Cause :\nElevated 5xx errors are caused by a timeout during health checks and subsequent requests, indicating issues with connectivity between services.\n\nSupporting Evidence :\n- `gateway-api-6f4b9d7c8d-mp9k2 stdout {\"ts\":\"2026-02-22T14:21:12.266Z\",\"level\":\"ERROR\",\"component\":\"http-client\",\"msg\":\"timeout contacting dependency\",\"request_id\":\"c0e9f1aa\",\"timeout_ms\":5000}`\n- `ingress-nginx-7c9f8d6c5b-qx2lm controller WARN 10.24.6.18 - - [22/Feb/2026:14:21:13 +0000] \"GET /login HTTP/1.1\" 502 0 \"-\" \"Mozilla/5.0\" request_id=c0e9f1aa upstream_response_time=5.000`"
+    },
+    {
+      "run_id": 3,
+      "response": "Root Cause :\nThe root cause of the issue is a connectivity problem between the ingress-nginx controller and the upstream service, leading to timeouts and 502 errors.\n\nSupporting Evidence :\n- The log entry at `2026-02-22T14:21:04.087Z` shows an `upstream timed out (110: Connection timed out)` warning.\n- Another log entry at `2026-02-22T14:21:12.266Z` shows an error with `timeout contacting dependency`, indicating that the ingress-nginx controller was unable to establish a successful connection to the upstream service.\n- The 502 Bad Gateway status codes observed (`2026-02-22T14:21:03.112Z`, `2026-02-22T14:21:07.332Z`, `2026-02-22T14:21:08.204Z`) are consistent with the upstream service being unresponsive, as seen in the `upstream_response_time` exceeding the expected range."
+    }
+  ]
+}
