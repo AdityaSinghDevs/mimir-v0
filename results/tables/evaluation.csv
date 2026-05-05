@@ -8,7 +8,7 @@ incident_01,structured,3,0,1,1,1,high,high
 incident_02,freeform,1,0,0,2,1,high,moderate
 incident_02,freeform,2,0,0,2,1,high,moderate
 incident_02,freeform,3,0,1,2,2,high,moderate
-incident_02,structured,1,0,1,1,2,high,moderate,
+incident_02,structured,1,0,1,1,2,high,moderate
 incident_02,structured,2,0,0,2,1,high,moderate
 incident_02,structured,3,0,0,2,2,high,moderate
 incident_03,freeform,1,0,0,2,1,high,high
