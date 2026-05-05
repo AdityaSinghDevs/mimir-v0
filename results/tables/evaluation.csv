@@ -1,0 +1,25 @@
+incident_id,prompt_type,run_id,accuracy,hallucination,evidence,reasoning,confidence_in_eval, incident_ambiguity
+incident_01,freeform,1,0,1,1,1,high,high
+incident_01,freeform,2,0,0,2,1,high,high
+incident_01,freeform,3,0,1,1,0,high,high
+incident_01,structured,1,1,0,2,2,high,high
+incident_01,structured,2,0,1,1,1,high,high
+incident_01,structured,3,0,1,1,1,high,high
+incident_02,freeform,1,0,0,2,1,high,moderate
+incident_02,freeform,2,0,0,2,1,high,moderate
+incident_02,freeform,3,0,1,2,2,high,moderate
+incident_02,structured,1,0,1,1,2,high,moderate,
+incident_02,structured,2,0,0,2,1,high,moderate
+incident_02,structured,3,0,0,2,2,high,moderate
+incident_03,freeform,1,0,0,2,1,high,high
+incident_03,freeform,2,0,0,1,1,high,high
+incident_03,freeform,3,0,0,2,2,high,high
+incident_03,structured,1,1,1,2,2,high,high
+incident_03,structured,2,0,0,2,2,high,high
+incident_03,structured,3,0,0,1,1,high,high
+incident_04,freeform,1,1,1,2,2,high,low
+incident_04,freeform,2,1,0,2,1,high,low
+incident_04,freeform,3,1,0,2,1,high,low
+incident_04,structured,1,0,0,1,2,high,low
+incident_04,structured,2,0,0,2,2,high,low
+incident_04,structured,3,0,0,2,1,high,low
