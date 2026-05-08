@@ -166,7 +166,7 @@ If you reference this work:
 ```
 Singh, A. P. (2025). Mimir v0: Evaluating Structured Diagnostic Reasoning 
 in LLM-Based Incident Analysis. GitHub. 
-https://github.com/[your-username]/mimir-v0
+https://github.com/AdityaSinghDevs/mimir-v0
 ```
 
 ---
